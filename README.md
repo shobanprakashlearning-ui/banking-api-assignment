@@ -1,12 +1,18 @@
-API Automation Assignment: Banking Test Suite Project Overview This project is an automated API testing framework for a banking application, named api-automation-assignment. It validates core business behaviors including the customer lifecycle, account management, and fund transfers.
+**API Automation Assignment:** 
+Banking Test Suite Project Overview This project is an automated API testing framework for a banking application, named api-automation-assignment. It validates core business behaviors including the customer lifecycle, account management, and fund transfers.
 
-The framework is built using Java and Maven. It utilizes a Behavior-Driven Development (BDD) approach with Cucumber, leveraging Rest-Assured for all API interactions and TestNG as the test runner.
+**The framework is built using Java and Maven**. It utilizes a Behavior-Driven Development (BDD) approach with Cucumber, leveraging Rest-Assured for all API interactions and TestNG as the test runner.
 
-Execute the following command to run the suite mvn clean test Viewing the Reports After the test execution finishes, TestNG and Cucumber will generate execution reports in the target directory. Navigate to the root directory of the project (where the pom.xml is located). Navigate to the target/surefire-reports/ folder.
+**How to Run the Suite**
+
+Execute the following command to run the suite 
+"**mvn clean test**" 
+Viewing the Reports After the test execution finishes, TestNG and Cucumber will generate execution reports in the target directory. Navigate to the root directory of the project (where the pom.xml is located). Navigate to the target/surefire-reports/ folder.
 
 Open index.html or emailable-report.html in your web browser to view the test results, including any failed assertions and logged diagnostics.
 
-Technology Stack Build Tool: Maven. XML
+**Technology Stack** 
+Build Tool: Maven.
 
 API Client: Rest-Assured (v5.3.0).
 
@@ -38,7 +44,7 @@ TXT
 
 .project & .classpath: Eclipse-specific configuration files for defining the build commands, natures, and source/output paths.
 
-Prerequisites Java Development Kit (JDK): Java 11 or higher installed and configured in your system PATH (Note: The Eclipse classpath is currently mapped to a JavaSE-1.8 container).
+**Prerequisites** Java Development Kit (JDK): Java 11 or higher installed and configured in your system PATH (Note: The Eclipse classpath is currently mapped to a JavaSE-1.8 container).
 Unknown
 
 Maven: Apache Maven installed and configured in your system PATH.
