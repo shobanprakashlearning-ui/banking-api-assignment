@@ -16,6 +16,7 @@ import io.restassured.response.Response;
 
 import static org.testng.Assert.assertEquals;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 import java.util.Random;
@@ -29,9 +30,9 @@ public class TransferSteps {
     Random random = new Random();
     private String accountNumber1;
     private String accountNumber2;
-	double sourceBalanceBeforeTransfer;
-	double destinationBalanceBeforeTransfer;   
-	double transferAmount;
+    Double sourceBalanceBeforeTransfer;
+    Double destinationBalanceBeforeTransfer;   
+    Double transferAmount;
     
     
     public TransferSteps(TestContext testContext) {
@@ -50,6 +51,16 @@ public class TransferSteps {
     	accountNumber2=i_add_a_new_account_to_the_existing_customer();    	
     	testContext.setAccountNumber2(accountNumber2);
     	
+		
+	}
+    
+    @When("Add an account to an customer having explicit opening balances")    
+    public void add_an_account_to_an_existing_customer() {
+    	
+		// Add first account
+    	accountNumber1=i_add_a_new_account_to_the_existing_customer();     	
+    	testContext.setAccountNumber1(accountNumber1);  
+    	System.out.println("Account Number 1: " + accountNumber1);
 		
 	}
     
@@ -80,6 +91,7 @@ public class TransferSteps {
         accountPayload.setBankInformation(bankInfo);
         accountPayload.setAccountStatus("ACTIVE");
         accountPayload.setAccountType("CHECKING");
+        accountPayload.setAccountBalance(1000.00);
         // Adding an explicit opening balance to ensure sufficient source funds for future transfers
         accountPayload.setAccountBalance(1000.00); 
         // Using Instant.now().toString() generates the required ISO-8601 timestamp format
@@ -104,7 +116,7 @@ public class TransferSteps {
     
     
     @Then("I get the account balance")
-    public double i_get_the_account_balance(String accountNumber) {
+    public Double i_get_the_account_balance(String accountNumber) {
 		
 		// Get balance for an account
 		response = RestAssured.given()
@@ -113,9 +125,11 @@ public class TransferSteps {
 				.get("/accounts/"+accountNumber);
 				
 		response.then().log().ifValidationFails();	
-		double accountBalance = response.jsonPath().getDouble("accountBalance");		
+		double accountBalance = response.jsonPath().getDouble("accountBalance");	
 		
-		return accountBalance;
+		Double balance = Double.valueOf(accountBalance);
+		
+		return balance;
 	}
     
     @Then("I get the balance in source and destination accounts before transfer")
@@ -131,11 +145,14 @@ public class TransferSteps {
     @Then("verify the balance in both the source and destination accounts is updated correctly")
     public void verify_the_balance_in_both_the_source_and_destination_accounts_is_updated_correctly() {
     	
-		double sourceBalanceAfterTransfer = i_get_the_account_balance(accountNumber1);
-		double destinationBalanceAfterTransfer = i_get_the_account_balance(accountNumber2);
+		Double sourceBalanceAfterTransfer = i_get_the_account_balance(accountNumber1);
+		Double destinationBalanceAfterTransfer = i_get_the_account_balance(accountNumber2);
 		
-		assertEquals(sourceBalanceAfterTransfer, sourceBalanceBeforeTransfer - transferAmount, "Source account balance did not update correctly after transfer.");
-		assertEquals(destinationBalanceAfterTransfer, destinationBalanceBeforeTransfer + transferAmount, "Destination account balance did not update correctly after transfer.");
+		System.out.println("Source Account Balance After Transfer: " + sourceBalanceAfterTransfer);
+		System.out.println("Destination Account Balance After Transfer: " + destinationBalanceAfterTransfer);
+		
+		assertEquals(sourceBalanceAfterTransfer, sourceBalanceBeforeTransfer-transferAmount, "Source account balance did not update correctly after transfer.");
+		assertEquals(destinationBalanceAfterTransfer, destinationBalanceBeforeTransfer+transferAmount, "Destination account balance did not update correctly after transfer.");
     			
     }
     
@@ -157,7 +174,7 @@ public class TransferSteps {
 		return accountBalance;
 	}
     
-	public void verifyTheTransactionHistory(String accountNum,String txType, double txAmount) {
+	public void verifyTheTransactionHistory(String accountNum,String txType, Double expectedTransferAmount) {
     	
     	
     	response = RestAssured.given()
@@ -171,13 +188,16 @@ public class TransferSteps {
     	
     	List<Transaction> transactions = response.jsonPath().getList("$", Transaction.class);
 
-    	// Access the first transaction safely
-    	if (!transactions.isEmpty()) {
-    	    Transaction firstTx = transactions.get(0);
-    	    assertEquals(firstTx.getAccountNumber(), Long.parseLong(accountNum), "The account number did not match the expected value.");
-    	    assertEquals(firstTx.getTxType(), txType, "The transaction type did not match the expected value.");
-    	    assertEquals(firstTx.getTxAmount(), txAmount, "The transaction amount did not match the expected value.");
-    	}
+    	for (int tx = 0; tx < transactions.size(); tx++) {
+    		if (!transactions.isEmpty()) {
+        	    Transaction firstTx = transactions.get(tx);        		
+        	    assertEquals(firstTx.getAccountNumber(), Long.parseLong(accountNum), "The account number did not match the expected value.");
+        	    assertEquals(firstTx.getTxType(), txType, "The transaction type did not match the expected value.");
+        	    assertEquals(firstTx.getTxAmount(), expectedTransferAmount, "The transaction amount did not match the expected value.");
+        	}
+		}
+    	
+    
     	
     }
     
@@ -188,7 +208,7 @@ public class TransferSteps {
     	
 		String sourceAccountNumber = testContext.getAccountNumber1();
 		String destinationAccountNumber = testContext.getAccountNumber2();
-		double expectedTransferAmount = transferAmount;
+		Double expectedTransferAmount = transferAmount;
 		
 		// Verify debit record for source account
 		verifyTheTransactionHistory(sourceAccountNumber,"DEBIT", expectedTransferAmount);
@@ -203,11 +223,12 @@ public class TransferSteps {
 		
 		TransferPayload transferPayload=new TransferPayload();
 		transferPayload.setFromAccountNumber(accountNumber1);
-		transferPayload.setToAccountNumber(accountNumber2);
-		transferPayload.setTransferAmount(Double.parseDouble(transferAmt));
+		transferPayload.setToAccountNumber(accountNumber2);		
+		transferPayload.setTransferAmount(Double.valueOf(transferAmt));
 		String customerNumber = testContext.getCustomerNumber();
 		
-		transferAmount=Double.parseDouble(transferAmt);
+		transferAmount = Double.valueOf(transferAmt);
+		
 		
 		
 		// Send the POST request to perform the transfer
@@ -229,9 +250,9 @@ public class TransferSteps {
     
     
     
-    @When("I attempt to transfer {string} from the source account to the destination account and verify Rejection")
-    public void i_attempt_to_transfer_from_the_source_to_destination_and_verify_rejection(String amount) {
-        double transferAmount = Double.parseDouble(amount);
+    @When("I attempt to transfer {string} from the source account to the destination account")
+    public Response i_attempt_to_transfer_from_the_source_to_destination_account(String amount) {
+       Double transferAmount = Double.valueOf(amount);       
        String customerNumber = testContext.getCustomerNumber();
 
         // 1. Build the transfer payload
@@ -249,19 +270,36 @@ public class TransferSteps {
      				.put("/accounts/transfer/"+customerNumber);
 
      		response.then().log().ifValidationFails();
+     		
+     		return response;
+    }
+    
+    @When("verify if the transaction is rejected due to negative amount")
+    public void verify_if_the_transaction_is_rejected_due_to_negative_amount(){
 
         assertEquals(response.getStatusCode(), 400, "Expected rejected transfer to return 400 status.");
         
     	String responseBody = response.asString().trim();
-  	    assertEquals(responseBody, "Insufficient Funds.", "The response message did not throw the Expected Insufficient Funds error string.");
+  	    assertEquals(responseBody, "Negative amount not allowed", "The response message did not throw the Negative amount not allowed error.");
+    	
+    }
+    
+    
+    @When("verify if the transaction is rejected due to insufficient funds")
+    public void verify_if_the_transaction_is_rejected_due_to_insufficient_funds(){
+
+        assertEquals(response.getStatusCode(), 400, "Expected rejected transfer to return 400 status.");
+        
+    	String responseBody = response.asString().trim();
+  	    assertEquals(responseBody, "Insufficient Funds.", "The response message did not throw the Insufficient Funds error.");
     	
     }
 
     @Then("the account balances remain unchanged")
     public void the_account_balances_remain_unchanged() {
     	
-    	double sourceBalanceAfterTransfer = i_get_the_account_balance(accountNumber1);
-		double destinationBalanceAfterTransfer = i_get_the_account_balance(accountNumber2);
+    	Double sourceBalanceAfterTransfer = i_get_the_account_balance(accountNumber1);
+    	Double destinationBalanceAfterTransfer = i_get_the_account_balance(accountNumber2);
 		
 		assertEquals(sourceBalanceAfterTransfer, sourceBalanceBeforeTransfer, "Source balance should remain unchanged.");
 		assertEquals(destinationBalanceAfterTransfer, destinationBalanceBeforeTransfer, "Destination balance should remain unchanged.");
@@ -296,6 +334,24 @@ public class TransferSteps {
     	assertEquals(response.getStatusCode(), 200, "Expected transaction retrieval to return 200");
        	rawResponse = response.asString().trim();
     	assertEquals(rawResponse, "[]", "Expected an empty array but got: " + rawResponse);
+    	
+    }
+    
+    @And("retrieving the deleted account should show that it no longer exists")
+    public void retrieving_the_customer_shows_that_it_no_longer_exists() {    	
+		
+    	String accountNumber1 = testContext.getAccountNumber1();
+    	
+		response = RestAssured.given()
+				.when()
+				.get("accounts/"+ accountNumber1);
+		  
+		  response.then().log().ifValidationFails(); // Logs the full server response body and headers
+	   
+		assertEquals(response.getStatusCode(), 404, "Expected customer Retrival to return 404 after deletion");
+		
+		String responseBody = response.asString().trim();
+  	    assertEquals(responseBody, "Account Number "+accountNumber1+" not found.", "The response message did not match the expected Account Not Found Message.");
     	
     }
     

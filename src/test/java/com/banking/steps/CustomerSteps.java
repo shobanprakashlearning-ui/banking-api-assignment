@@ -78,15 +78,13 @@ public class CustomerSteps {
         response.then().log().ifValidationFails(); 
         assertEquals(response.getStatusCode(), 201, "Expected customer Retrival to return 201");
         
+        System.out.println("Customer created with customerNumber: " + customerNumber);
+        
         // Store the customer number in the shared context for later use
         testContext.setCustomerNumber(customerNumber); 
                 
     }
-
-    @Then("the customer creation is successful")
-    public void the_customer_creation_is_successful() {
-        assertEquals(response.getStatusCode(), 201, "Expected customer creation to return 201");
-    }
+    
 
     @And("I can retrieve the customer details")
     public void I_can_retrieve_the_customer_details() {    	
@@ -158,14 +156,12 @@ public class CustomerSteps {
   	    assertEquals(responseBody, "Success: Customer deleted.", "The response message did not match the expected Deletion Success string.");
     }
     
-    @And("retrieving the customer shows that it no longer exists")
+    @And("retrieving the customer should show that it no longer exists")
     public void retrieving_the_customer_shows_that_it_no_longer_exists() {    	
 		
 		response = RestAssured.given()
-				.contentType(ContentType.JSON)
-				.body(dynamicCustomerPayload)
 				.when()
-				.put("/customers/"+customerNumber);
+				.get("/customers/"+customerNumber);
 		  
 		  response.then().log().ifValidationFails(); // Logs the full server response body and headers
 	   

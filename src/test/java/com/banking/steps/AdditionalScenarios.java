@@ -17,6 +17,7 @@ import com.banking.models.BankInformation;
 import com.banking.models.BranchAddress;
 import com.banking.models.ContactDetails;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -55,7 +56,7 @@ public class AdditionalScenarios {
                   .when()
                   .get("/customers/"+customerNumber);
           
-          response.then().log().ifValidationFails(); // Logs the full server response body and headers
+          response.then().log().all(); // Logs the full server response body and headers
        
         assertEquals(response.getStatusCode(), 404, "Expected customer Retrival to return error");
        

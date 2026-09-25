@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="8" passed="3" failed="5" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-09-25T23:15:15 IST" name="Default suite" finished-at="2026-09-25T23:15:54 IST" duration-ms="39257">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2026-09-25T23:15:15 IST" name="Default test" finished-at="2026-09-25T23:15:54 IST" duration-ms="39257">
+      <class name="com.banking.runner.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:15 IST" name="setUpClass" finished-at="2026-09-25T23:15:16 IST" duration-ms="988" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@c96c497]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:19 IST" duration-ms="2955" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Attempt to retrieve an unknown customer reference"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Additonal Scenarios"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Expected customer Retrival to return error expected [404] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Expected customer Retrival to return error expected [404] but found [200]
+at org.testng.Assert.fail(Assert.java:110)
+at org.testng.Assert.failNotEquals(Assert.java:1577)
+at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+at org.testng.Assert.assertEquals(Assert.java:131)
+at org.testng.Assert.assertEquals(Assert.java:1418)
+at org.testng.Assert.assertEquals(Assert.java:1382)
+at com.banking.steps.AdditionalScenarios.i_retrieve_the_customer_details_using_the_nonExistent_customer_number_and_verify_Error(AdditionalScenarios.java:61)
+at ✽.I retrieve the customer details using the non-Existent customer number and verify Error(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/additionalScenarios.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:19 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:21 IST" duration-ms="2512" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Attempt to create an account with a duplicate account number"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Additonal Scenarios"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:26 IST" duration-ms="4831" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Complete customer lifecycle from creation to deletion"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Customer Lifecycle Management"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Expected customer Retrival to return 404 after deletion expected [404] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Expected customer Retrival to return 404 after deletion expected [404] but found [200]
+at org.testng.Assert.fail(Assert.java:110)
+at org.testng.Assert.failNotEquals(Assert.java:1577)
+at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+at org.testng.Assert.assertEquals(Assert.java:131)
+at org.testng.Assert.assertEquals(Assert.java:1418)
+at org.testng.Assert.assertEquals(Assert.java:1382)
+at com.banking.steps.CustomerSteps.retrieving_the_customer_shows_that_it_no_longer_exists(CustomerSteps.java:168)
+at ✽.retrieving the customer should show that it no longer exists(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/customerLifecycle.feature:10)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:30 IST" duration-ms="4005" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Complete customer lifecycle from creation to detetion with account"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Customer Lifecycle Management"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Expected customer Retrival to return 404 after deletion expected [404] but found [302]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Expected customer Retrival to return 404 after deletion expected [404] but found [302]
+at org.testng.Assert.fail(Assert.java:110)
+at org.testng.Assert.failNotEquals(Assert.java:1577)
+at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+at org.testng.Assert.assertEquals(Assert.java:131)
+at org.testng.Assert.assertEquals(Assert.java:1418)
+at org.testng.Assert.assertEquals(Assert.java:1382)
+at com.banking.steps.TransferSteps.retrieving_the_customer_shows_that_it_no_longer_exists(TransferSteps.java:351)
+at ✽.retrieving the deleted account should show that it no longer exists(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/customerLifecycle.feature:18)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:38 IST" duration-ms="7652" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Successful transfer between accounts"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Account Transfers"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:38 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:40 IST" duration-ms="2558" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Test Get account details API"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Account Transfers"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Expected Account Details retrieval to return 200 expected [200] but found [302]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Expected Account Details retrieval to return 200 expected [200] but found [302]
+at org.testng.Assert.fail(Assert.java:110)
+at org.testng.Assert.failNotEquals(Assert.java:1577)
+at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+at org.testng.Assert.assertEquals(Assert.java:131)
+at org.testng.Assert.assertEquals(Assert.java:1418)
+at org.testng.Assert.assertEquals(Assert.java:1382)
+at com.banking.steps.TransferSteps.getAccountDetails(TransferSteps.java:170)
+at ✽.I get the account details(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/transfers.feature:15)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:45 IST" duration-ms="4477" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Rejected transfers"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Account Transfers"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Expected rejected transfer to return 400 status. expected [400] but found [200]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Expected rejected transfer to return 400 status. expected [400] but found [200]
+at org.testng.Assert.fail(Assert.java:110)
+at org.testng.Assert.failNotEquals(Assert.java:1577)
+at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+at org.testng.Assert.assertEquals(Assert.java:131)
+at org.testng.Assert.assertEquals(Assert.java:1418)
+at org.testng.Assert.assertEquals(Assert.java:1382)
+at com.banking.steps.TransferSteps.verify_if_the_transaction_is_rejected_due_to_negative_amount(TransferSteps.java:280)
+at ✽.verify if the transaction is rejected due to negative amount(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/transfers.feature:20)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:45 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-25T23:15:54 IST" duration-ms="9113" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Rejected transfers"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Account Transfers"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.banking.runner.TestRunner@6302bbb1]" started-at="2026-09-25T23:15:54 IST" name="tearDownClass" finished-at="2026-09-25T23:15:54 IST" duration-ms="37" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.banking.runner.TestRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

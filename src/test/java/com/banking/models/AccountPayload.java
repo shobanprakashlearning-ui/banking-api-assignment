@@ -1,11 +1,13 @@
 package com.banking.models;
 
+import java.math.BigDecimal;
+
 public class AccountPayload {
     private long accountNumber;
     private BankInformation bankInformation;
     private String accountStatus;
     private String accountType;
-    private double accountBalance;
+    private Double accountBalance;
     private String accountCreated;
 
     public long getAccountNumber() { return accountNumber; }
@@ -16,8 +18,8 @@ public class AccountPayload {
     public void setAccountStatus(String accountStatus) { this.accountStatus = accountStatus; }
     public String getAccountType() { return accountType; }
     public void setAccountType(String accountType) { this.accountType = accountType; }
-    public double getAccountBalance() { return accountBalance; }
-    public void setAccountBalance(double accountBalance) { this.accountBalance = accountBalance; }
+    public Double getAccountBalance() { return accountBalance; }
+    public void setAccountBalance(Double accountBalance) { this.accountBalance = accountBalance; }
     public String getAccountCreated() { return accountCreated; }
     public void setAccountCreated(String accountCreated) { this.accountCreated = accountCreated; }
 }

@@ -1,0 +1,224 @@
+<html>
+<head>
+<title>TestNG:  Default test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Default test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>3/5/0</td>
+</tr><tr>
+<td>Started on:</td><td>Fri Sep 25 23:15:15 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>39 seconds (39257 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Attempt to retrieve an unknown customer reference", "Additonal Scenarios"</td>
+<td><div><pre>java.lang.AssertionError: Expected customer Retrival to return error expected [404] but found [200]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.AdditionalScenarios.i_retrieve_the_customer_details_using_the_nonExistent_customer_number_and_verify_Error(AdditionalScenarios.java:61)
+	at ✽.I retrieve the customer details using the non-Existent customer number and verify Error(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/additionalScenarios.feature:5)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1129442657", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1129442657'><pre>java.lang.AssertionError: Expected customer Retrival to return error expected [404] but found [200]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.AdditionalScenarios.i_retrieve_the_customer_details_using_the_nonExistent_customer_number_and_verify_Error(AdditionalScenarios.java:61)
+	at ✽.I retrieve the customer details using the non-Existent customer number and verify Error(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/additionalScenarios.feature:5)
+</pre></div></td>
+<td>2</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Test Get account details API", "Account Transfers"</td>
+<td><div><pre>java.lang.AssertionError: Expected Account Details retrieval to return 200 expected [200] but found [302]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.TransferSteps.getAccountDetails(TransferSteps.java:170)
+	at ✽.I get the account details(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/transfers.feature:15)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1881716172", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1881716172'><pre>java.lang.AssertionError: Expected Account Details retrieval to return 200 expected [200] but found [302]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.TransferSteps.getAccountDetails(TransferSteps.java:170)
+	at ✽.I get the account details(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/transfers.feature:15)
+</pre></div></td>
+<td>2</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Rejected transfers", "Account Transfers"</td>
+<td><div><pre>java.lang.AssertionError: Expected rejected transfer to return 400 status. expected [400] but found [200]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.TransferSteps.verify_if_the_transaction_is_rejected_due_to_negative_amount(TransferSteps.java:280)
+	at ✽.verify if the transaction is rejected due to negative amount(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/transfers.feature:20)
+</pre></div><a href='#' onClick='toggleBox("stack-trace446895188", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace446895188'><pre>java.lang.AssertionError: Expected rejected transfer to return 400 status. expected [400] but found [200]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.TransferSteps.verify_if_the_transaction_is_rejected_due_to_negative_amount(TransferSteps.java:280)
+	at ✽.verify if the transaction is rejected due to negative amount(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/transfers.feature:20)
+</pre></div></td>
+<td>4</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Complete customer lifecycle from creation to detetion with account", "Customer Lifecycle Management"</td>
+<td><div><pre>java.lang.AssertionError: Expected customer Retrival to return 404 after deletion expected [404] but found [302]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.TransferSteps.retrieving_the_customer_shows_that_it_no_longer_exists(TransferSteps.java:351)
+	at ✽.retrieving the deleted account should show that it no longer exists(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/customerLifecycle.feature:18)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1436434279", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1436434279'><pre>java.lang.AssertionError: Expected customer Retrival to return 404 after deletion expected [404] but found [302]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.TransferSteps.retrieving_the_customer_shows_that_it_no_longer_exists(TransferSteps.java:351)
+	at ✽.retrieving the deleted account should show that it no longer exists(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/customerLifecycle.feature:18)
+</pre></div></td>
+<td>4</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Complete customer lifecycle from creation to deletion", "Customer Lifecycle Management"</td>
+<td><div><pre>java.lang.AssertionError: Expected customer Retrival to return 404 after deletion expected [404] but found [200]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.CustomerSteps.retrieving_the_customer_shows_that_it_no_longer_exists(CustomerSteps.java:168)
+	at ✽.retrieving the customer should show that it no longer exists(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/customerLifecycle.feature:10)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1070808904", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1070808904'><pre>java.lang.AssertionError: Expected customer Retrival to return 404 after deletion expected [404] but found [200]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1577)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:1418)
+	at org.testng.Assert.assertEquals(Assert.java:1382)
+	at com.banking.steps.CustomerSteps.retrieving_the_customer_shows_that_it_no_longer_exists(CustomerSteps.java:168)
+	at ✽.retrieving the customer should show that it no longer exists(file:///C:/Users/Shoban/eclipse-workspace/NewEclipseWorkspace/api-automation-assignment/src/test/resources/features/customerLifecycle.feature:10)
+</pre></div></td>
+<td>4</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Rejected transfers", "Account Transfers"</td>
+<td></td>
+<td>9</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Attempt to create an account with a duplicate account number", "Additonal Scenarios"</td>
+<td></td>
+<td>2</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+<tr>
+<td title='com.banking.runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: com.banking.runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Successful transfer between accounts", "Account Transfers"</td>
+<td></td>
+<td>7</td>
+<td>com.banking.runner.TestRunner@6302bbb1</td></tr>
+</table><p>
+</body>
+</html>

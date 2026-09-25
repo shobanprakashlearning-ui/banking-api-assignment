@@ -1,9 +1,11 @@
 package com.banking.models;
 
+import java.math.BigDecimal;
+
 public class TransferPayload {
     private String fromAccountNumber;
     private String toAccountNumber;
-    private double transferAmount;
+    private Double transferAmount;
 
     // Getters and Setters
     public String getFromAccountNumber() {
@@ -22,11 +24,11 @@ public class TransferPayload {
         this.toAccountNumber = toAccountNumber;
     }
 
-    public double getTransferAmount() {
+    public Double getTransferAmount() {
         return transferAmount;
     }
 
-    public void setTransferAmount(double transferAmount) {
+    public void setTransferAmount(Double transferAmount) {
         this.transferAmount = transferAmount;
     }
 }

@@ -1,10 +1,12 @@
 package com.banking.models;
 
+import java.math.BigDecimal;
+
 public class Transaction {
     private int accountNumber;
     private String txDateTime;
     private String txType;
-    private double txAmount;
+    private Double txAmount;
 
     // Getters
     public int getAccountNumber() {
@@ -19,7 +21,7 @@ public class Transaction {
         return txType;
     }
 
-    public double getTxAmount() {
+    public Double getTxAmount() {
         return txAmount;
     }
 
@@ -36,7 +38,7 @@ public class Transaction {
         this.txType = txType;
     }
 
-    public void setTxAmount(double txAmount) {
+    public void setTxAmount(Double txAmount) {
         this.txAmount = txAmount;
     }
 }
